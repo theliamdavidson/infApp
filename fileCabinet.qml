@@ -159,10 +159,65 @@ ApplicationWindow{
                 width: 180
                 height: 70
                 radius: 5
-                text: qsTr("Exit System")
+                text: qsTr("Return to Main Menu")
                 leftPadding: 10
                 highlighted: true
-               // onClicked:                          // future functionality
+                onClicked: confirmationClose.open()
+            }
+            Popup{
+                id: confirmationClose
+                x: 312
+                y: 284
+                width: 400
+                height:200
+                modal: true
+                focus: true
+                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+                Rectangle {
+                    id: confirmationCloseTitle
+                    x: 10
+                    y: 0
+                    width: 370
+                    height: 100
+                    radius: 5
+                    visible: true
+                    gradient: Gradient {
+                        GradientStop { position: 0; color: "#901c3b"}
+                        GradientStop { position: 1; color: "#e13f52"}
+                    }
+                    Label{
+                        text: "Do you want to close?"
+                        font.bold: true
+                        font.pointSize: 18
+                        color: "black"
+                        anchors.centerIn: parent
+
+                    }
+
+                }
+
+                RoundButton {
+                    id: confirmClose
+                    x: 10
+                    y: 115
+                    width: 180
+                    height: 70
+                    radius: 5
+                    text: qsTr("Yes")
+                    leftPadding: 10
+                    onClicked: root.close()
+                }
+                RoundButton {
+                    id: cancelConfirm
+                    x: 200
+                    y: 115
+                    width: 180
+                    height: 70
+                    radius: 5
+                    text: qsTr("No")
+                    leftPadding: 10
+                    onClicked: confirmationClose.close()
+                }
             }
 
             Image {
