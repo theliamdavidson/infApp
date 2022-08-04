@@ -361,7 +361,9 @@ ApplicationWindow{
                         layer.enabled: false
                         anchors.horizontalCenter: parent
                         onClicked: {
-                            scanPopup.open()
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
                             scanOptions.close()
 
                         }
@@ -380,10 +382,11 @@ ApplicationWindow{
                         leftPadding: 10
                         highlighted: true
                         onClicked: {
-                            scanPopup.open()
-                            scanOptions.close()
                             //----------------------------------------------------------------------------------------------------------------------------------------
-
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
+                            scanOptions.close()
                         }
                     }
                     RoundButton {
@@ -399,7 +402,9 @@ ApplicationWindow{
                         leftPadding: 10
                         highlighted: true
                         onClicked: {
-                            scanPopup.open()
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
                             scanOptions.close()
                         }
                     }
@@ -416,7 +421,9 @@ ApplicationWindow{
                         leftPadding: 10
                         highlighted: true
                         onClicked: {
-                            scanPopup.open()
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
                             scanOptions.close()
                         }
                     }
@@ -433,7 +440,9 @@ ApplicationWindow{
                         leftPadding: 10
                         highlighted: true
                         onClicked: {
-                            scanPopup.open()
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
                             scanOptions.close()
                         }
                     }
@@ -450,7 +459,9 @@ ApplicationWindow{
                         leftPadding: 10
                         highlighted: true
                         onClicked: {
-                            scanPopup.open()
+                            var component = Qt.createComponent("scan.qml")
+                            var window    = component.createObject(root)
+                            window.show()
                             scanOptions.close()
                         }
                     }
@@ -486,194 +497,7 @@ ApplicationWindow{
                 text: qsTr("Return")
                 leftPadding: 10
             }
-            Popup{
-                id: scanPopup
-                width: 1024
-                height: 605
-                modal: true
-                focus: true
-                closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-                onClosed: windowName.visible = true
-                onOpened: windowName.visible = false
-                x: 0
-                y: 162
-                Rectangle {
-                    id: nameBorder
-                    x: 60
-                    y: 45
-                    width: 380
-                    height: 66
-                    radius: 5
-                    visible: true
-                    gradient: Gradient {
-                        GradientStop { position: 0; color: "#901c3b"}
-                        GradientStop { position: 1; color: "#e13f52"}
-                    }
-                    Label{
-                        id: artery
-                        text: qsTr("Begin Scan:")
-                        font.family: "Segou UI"
-                        font.pointSize: 18
-                        color: "white"
-                        anchors.centerIn: parent
-                    }
-                }
-                Rectangle {
-                    id: rectangle1
-                    x: 120
-                    y: 175
-                    width: 57
-                    height: 138
-                    rotation: 270
-                    radius: 5
-                    gradient: Gradient {
-                        GradientStop {position: 0; color: "#901c3b"}
-                        GradientStop {position: 1; color: "#e13f52"}
-                    }
-                    Label{
-                        id: model0
-                        text: ""
-                        font.family: "Segou UI"
-                        font.pointSize: 18
-                        color: "white"
-                        anchors.centerIn: parent
-                        rotation: 90
-                    }
-                }
-                Rectangle {
-                    id: rectangle2
-                    x: 310
-                    y: 175
-                    width: 57
-                    height: 138
-                    rotation: 270
-                    radius: 5
-                    gradient: Gradient {
-                        GradientStop {position: 0; color: "#901c3b"}
-                        GradientStop {position: 1; color: "#e13f52"}
-                    }
-                    Label{
-                        id: model1
-                        text: ""
-                        font.family: "Segou UI"
-                        font.pointSize: 18
-                        color: "white"
-                        anchors.centerIn: parent
-                        rotation: 90
-                    }
-                }
-                Rectangle {
-                    id: rectangle3
-                    x: 120
-                    y: 322
-                    width: 57
-                    height: 138
-                    rotation: 270
-                    radius: 5
-                    gradient: Gradient {
-                        GradientStop {position: 0; color: "#901c3b"}
-                        GradientStop {position: 1; color: "#e13f52"}
-                    }
-                    TextEdit{
-                        id: edit0
-                        text: " "
-                        font.family: "Segou UI"
-                        font.pointSize: 18
-                        color: "white"
-                        anchors.centerIn: parent
-                        rotation: 90
-                        focus: true
-                    }
-                }
-                Rectangle {
-                    id: rectangle4
-                    x: 310
-                    y: 322
-                    width: 57
-                    height: 138
-                    rotation: 270
-                    radius: 5
-                    gradient: Gradient {
-                        GradientStop {position: 0; color: "#901c3b"}
-                        GradientStop {position: 1; color: "#e13f52"}
-                    }
-                    TextEdit{
-                        id: edit1
-                        text: " "
-                        font.family: "Segou UI"
-                        font.pointSize: 18
-                        color: "white"
-                        anchors.centerIn: parent
-                        rotation: 90
-                        focus: true
-                    }
-                }
-                Rectangle {
-                    id: rectangleanatomy
-                    x: 600
-                    y: 45
-                    width: 330
-                    height: 375
-                    radius: 5
-                    state: ""
-                    gradient: Gradient {
-                        GradientStop {position: 0; color: "#901c3b"}
-                        GradientStop {position: 1; color: "#e13f52"}
-                    }
-                    Image {
-                        id: anatonmyView
-                        anchors.centerIn: parent
-                        width: 330
-                        height: 330
-                        source: "chest.png"
-                        fillMode: Image.PreserveAspectFit
-                    }
 
-                }
-                RoundButton {
-                    id: continueOn
-                    x: 60
-                    y: 517
-                    width: 447
-                    height: 80
-                    visible: true
-                    radius: 5
-                    text: qsTr("CONTINUE")
-                    flat: true
-                    font.bold: true
-                    font.pointSize: 12
-                    leftPadding: 10
-                    highlighted: true
-                    layer.enabled: false
-                    onClicked: {
-                        var text0 = String(Math.floor(Math.random() * (999 - 100) ) + 100);
-                        var text1 = String(Math.floor(Math.random() * (999 - 100) ) + 100);
-                        model0.text =  text0[0] + "." + text0[1] + text0[2]
-                        model1.text =  text1[0] + "." + text1[1] + text1[2]
-                        edit0.text = " "
-                        edit1.text = " "
-                        // swap for scan data in future functionality
-                    }
-
-                }
-                RoundButton {
-                    id: mainMenu
-                    x: 513
-                    y: 517
-                    width: 447
-                    height: 80
-                    radius: 5
-                    text: qsTr("FILE CABINET")
-                    flat: true
-                    font.bold: true
-                    font.pointSize: 12
-                    leftPadding: 10
-                    highlighted: true
-                    onClicked: scanPopup.close()
-                }
-
-
-            }
             RoundButton {
                 id: nextScreen
                 x: 27

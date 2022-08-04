@@ -70,7 +70,7 @@ ApplicationWindow {
                 GradientStop { position: 1; color: "#e13f52"}
             }
             RoundButton {
-                id: continueOn
+                id: fileCabinet
                 x: 102
                 y: 10
                 width: 175
@@ -91,10 +91,10 @@ ApplicationWindow {
                     window.show()
                 }
                 onClicked: {
-                    continueOn.activate()
+                    fileCabinet.activate()
                 }
-                Keys.onSpacePressed: continueOn.activate()
-                Keys.onEnterPressed: continueOn.activate()
+                Keys.onSpacePressed: fileCabinet.activate()
+                Keys.onEnterPressed: fileCabinet.activate()
             }
             RoundButton {
                 id: mainmenu
@@ -109,8 +109,8 @@ ApplicationWindow {
                 leftPadding: 10
                 highlighted: true
                 onClicked: {
-
-                        }
+                    root.close()
+                }
             }
         }
 
